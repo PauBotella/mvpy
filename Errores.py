@@ -1,4 +1,5 @@
 from sys import stderr,stdout
+import os
 
 class Logger:
     def __init__(self,verbose=False):

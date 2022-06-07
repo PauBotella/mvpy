@@ -6,18 +6,18 @@ import os
 logger = Logger()
 
 
-
 def mover(origen, destino):
 
     if not comprobar_existe(destino):
-        raise Exception('Error el fichero/directorio ya existe')
+        raise Exception(f'Error {destino}  existe')
     else:
         shutil.move(origen,destino)
         logger.log(f"Se ha movido {origen} -> {destino}")
 
+
 def renombrar(origen, destino):
     if not comprobar_existe(destino):
-        raise Exception('Error el fichero/directorio ya existe')
+        raise Exception(f'Error {destino}  existe')
     else:
         os.rename(origen, destino)
         logger.log(f"{origen} -> {destino}")

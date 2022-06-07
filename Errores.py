@@ -14,6 +14,10 @@ class Logger:
     def error(self,mensaje,file=stderr):
         print(f'ERROR {mensaje}',file=file)
 
-
-class mvpyError(Exception):
-    pass
+def comprobar_existe(ruta):
+    es_correcto = True
+    if not os.path.exists(ruta):
+        es_correcto = False
+    else:
+        es_correcto = True
+    return es_correcto

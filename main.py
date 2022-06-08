@@ -1,7 +1,9 @@
 from mvpy import *
 from Errores import comprobar_existe
 
+
 def main():
+
     argumentos = terminal()
     logger.set_verbose(argumentos.verbose)
     try:
@@ -15,7 +17,6 @@ def main():
         else:
             comprobar_existe(argumentos.destino)
             renombrar(argumentos.origen, argumentos.destino,argumentos.sobreescribir)
-
 
     except Exception as ex:
         logger.error(ex)

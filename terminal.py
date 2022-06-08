@@ -1,11 +1,12 @@
 import argparse
 
-
 def terminal():
     parser = argparse.ArgumentParser(
-        prog='mover',
+        prog='mvpy',
         description='Mueve y renombra ficheros y directorios'
     )
+    #Se añaden los flags -i y -s al mismo grupo para evitar que se pongan juntos, ya que uno es el contrario del otro
+    grupo = parser.add_mutually_exclusive_group()
     parser.add_argument(
         '-v','--verbose',
         action='store_true',
@@ -18,7 +19,13 @@ def terminal():
         help='Mueve el contenido de dentro un directorio a otro (Equivalente a por ejemplo mv /home/pau/dir1/* /home/pau/dir2/)'
     )
 
-    parser.add_argument(
+    grupo.add_argument(
+        '-i', '--interactivo',
+        action='store_true',
+        help='Te va preguntando en el caso de que ya exista si quieres sobreescribirlo o no'
+    )
+
+    grupo.add_argument(
         '-s', '--sobreescribir',
         action='store_true',
         help='si el origen ya existe en el destino, lo sobreescribe'

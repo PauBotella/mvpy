@@ -13,7 +13,7 @@ def main():
             mover(argumentos.origen, argumentos.destino,argumentos.sobreescribir)
 
         elif os.path.isdir(argumentos.origen) and os.path.isdir(argumentos.origen):
-            mover_todo(argumentos.origen, argumentos.destino,argumentos.sobreescribir)
+            mover_todo(argumentos.origen, argumentos.destino,argumentos.sobreescribir,argumentos.dentro,argumentos.interactivo)
 
         else:
             comprobar_existe(argumentos.destino)

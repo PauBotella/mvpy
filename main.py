@@ -1,5 +1,5 @@
 from acciones import *
-import terminal
+from terminal import terminal
 from Errores import comprobar_existe
 
 

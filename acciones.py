@@ -4,6 +4,7 @@ import os
 
 logger = Logger()
 
+
 def mover_todo(origen, destino,sobreescribir=False,dentro=False):
 
     if comprobar_existe(destino) and not sobreescribir:
@@ -12,17 +13,15 @@ def mover_todo(origen, destino,sobreescribir=False,dentro=False):
     elif not comprobar_existe(origen):
         raise Exception(f"{origen} no existe")
 
-    elif not comprobar_existe(destino):
-        raise Exception(f"{destino} no existe")
-
-    elif dentro:
+    elif not dentro:
 
         for contenido in os.listdir(origen):
             if comprobar_existe(destino + contenido) and not sobreescribir:
                 raise Exception(f"{origen + contenido} ya existe, -s para sobreescribir")
 
             else:
-                os.remove(destino+contenido)
+                if comprobar_existe(destino+contenido):
+                    os.remove(destino+contenido)
                 shutil.move(origen + contenido, destino)
                 logger.log(f"Se ha movido {contenido} -> {destino}")
 

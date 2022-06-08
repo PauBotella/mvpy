@@ -1,4 +1,5 @@
-from mvpy import *
+from acciones import *
+import terminal
 from Errores import comprobar_existe
 
 

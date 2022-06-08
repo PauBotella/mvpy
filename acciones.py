@@ -5,19 +5,27 @@ import os
 logger = Logger()
 
 
-def mover_todo(origen, destino,sobreescribir=False,dentro=False):
+def mover_todo(origen, destino,sobreescribir=False,dentro=False, interactivo=False):
 
     if dentro:
         for contenido in os.listdir(origen):
-            if comprobar_existe(destino + contenido) and not sobreescribir:
-                raise Exception(f"{origen + contenido} ya existe, -s para sobreescribir")
-            else:
-                if comprobar_existe(destino + contenido):
-                    os.remove(destino + contenido)
-                shutil.move(origen + contenido, destino)
-                logger.log(f"Se ha movido {contenido} -> {destino}")
+
+            if comprobar_existe(destino + contenido):
+                confirmado=True
+                if interactivo:
+                    confirmado= 's' in input(f"Quieres sobreescribir {destino+contenido} ? [S/N]").lower()
+
+                elif not sobreescribir:
+                    confirmado=False
+                if confirmado:
+                    if comprobar_existe(destino + contenido):
+                        os.remove(destino + contenido)
+                    shutil.move(origen + contenido, destino)
+                    logger.log(f"Se ha movido {contenido} -> {destino}")
+
     else:
         shutil.move(origen,destino)
+
 
 def mover(origen, destino,sobreescribir=False):
 

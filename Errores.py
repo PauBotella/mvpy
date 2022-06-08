@@ -16,6 +16,7 @@ class Logger:
     def error(self,mensaje,file=stderr):
         print(f'ERROR: {mensaje}',file=file)
 
+
 def comprobar_existe(ruta):
     es_correcto = True
     if not os.path.exists(ruta):

@@ -13,7 +13,7 @@ class Logger:
             print(mensaje,file=file)
 
     def error(self,mensaje,file=stderr):
-        print(f'ERROR {mensaje}',file=file)
+        print(f'ERROR: {mensaje}',file=file)
 
 def comprobar_existe(ruta):
     es_correcto = True

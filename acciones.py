@@ -10,7 +10,10 @@ def mover_todo(origen, destino,sobreescribir=False,dentro=False):
     if dentro:
         for contenido in os.listdir(origen):
             if comprobar_existe(destino + contenido) and not sobreescribir:
-                raise Exception(f"{origen + contenido} ya existe, -s para sobreescribir")
+                raise Exception(f"{destino + contenido} ya existe, -s para sobreescribir")
+
+            elif not comprobar_existe(destino):
+                raise Exception(f"{destino} no existe")
             else:
                 if comprobar_existe(destino + contenido):
                     os.remove(destino + contenido)

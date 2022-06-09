@@ -26,7 +26,6 @@ def mover(origen, destino,sobreescribir=False):
 
     dividir_ruta=origen.split("/")
     ultimo=dividir_ruta.pop()
-    logger.log(ultimo)
     if not comprobar_existe(destino):
         raise Exception(f"{destino} no existe")
 

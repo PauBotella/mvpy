@@ -26,14 +26,14 @@ def mover(origen, destino,sobreescribir=False):
 
     dividir_ruta=origen.split("/")
     ultimo=dividir_ruta.pop()
-
+    logger.log(ultimo)
     if not comprobar_existe(destino):
         raise Exception(f"{destino} no existe")
 
-    elif not comprobar_existe(origen):
+    if not comprobar_existe(origen):
         raise Exception(f"{origen} no existe")
 
-    elif comprobar_existe(destino + ultimo) and not sobreescribir:
+    if comprobar_existe(destino + ultimo) and not sobreescribir:
         raise Exception(f"{destino+ultimo} ya existe, -s para sobreescribir")
 
     else:

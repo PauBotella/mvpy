@@ -1,6 +1,6 @@
 from acciones import *
 from terminal import terminal
-from Errores import comprobar_existe
+from Errores import *
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
         if os.path.isfile(argumentos.origen) and os.path.isdir(argumentos.destino):
             mover(argumentos.origen, argumentos.destino,argumentos.sobreescribir)
 
-        if os.path.isdir(argumentos.origen) and os.path.isdir(argumentos.origen):
+        elif os.path.isdir(argumentos.origen) and os.path.isdir(argumentos.origen):
             mover_todo(argumentos.origen, argumentos.destino,argumentos.sobreescribir,argumentos.dentro)
 
         else:

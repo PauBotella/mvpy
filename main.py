@@ -1,25 +1,24 @@
-from acciones import *
-from terminal import terminal
-from Errores import *
-
+from actions import *
+from cli import cli
 
 def main():
 
-    argumentos = terminal()
-    logger.set_verbose(argumentos.verbose)
+    arguments = cli()
+    logger.set_verbose(arguments.verbose)
     try:
 
-        if os.path.isfile(argumentos.origen) and os.path.isdir(argumentos.destino):
-            mover(argumentos.origen, argumentos.destino,argumentos.sobreescribir)
+        if os.path.isfile(arguments.source) and os.path.isdir(arguments.destination):
+            move(arguments.source, arguments.destination,arguments.override)
 
-        elif os.path.isdir(argumentos.origen) and os.path.isdir(argumentos.origen):
-            mover_todo(argumentos.origen, argumentos.destino,argumentos.sobreescribir,argumentos.dentro)
+        elif os.path.isdir(arguments.source) and os.path.isdir(arguments.destination):
+            move_all(arguments.source, arguments.destination,arguments.override,arguments.inside)
 
         else:
-            renombrar(argumentos.origen, argumentos.destino,argumentos.sobreescribir)
+            rename(arguments.source, arguments.destination,arguments.override)
 
     except Exception as ex:
         logger.error(ex)
+        exit(1)
 
 
 if __name__ == '__main__':

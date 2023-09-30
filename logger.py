@@ -1,5 +1,4 @@
 from sys import stderr,stdout
-import os
 
 
 class Logger:
@@ -11,15 +10,8 @@ class Logger:
 
     def log(self,mensaje,file=stdout):
         if self.verbose:
-            print(f'MENSAJE: {mensaje}',file=file)
+            print(f'\033[0;34m{mensaje}\033[0m',file=file)
 
     def error(self,mensaje,file=stderr):
-        print(f'ERROR: {mensaje}',file=file)
+        print(f'\033[0;31mError: {mensaje}\033[0m',file=file)
 
-def comprobar_existe(ruta):
-    es_correcto = True
-    if not os.path.exists(ruta):
-        es_correcto = False
-    else:
-        es_correcto = True
-    return es_correcto
